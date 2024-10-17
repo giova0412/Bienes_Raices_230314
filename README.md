@@ -1,6 +1,6 @@
 # Bienes_Raices_230314
 
-Proyecto debienes raices
+Proyecto de bienes raices
 ## Descripcion 
 
 
