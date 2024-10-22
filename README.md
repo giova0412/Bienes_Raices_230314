@@ -14,7 +14,7 @@ utilizando las reglas de negovio apropiadas para la gestion de indetificacion y 
 |No.|fecha|Descripcion|Estatus|potenciadores|
 |--|--|--|--|--|
 |8.|17/10/2024|repositorio del proyecto implementando .gitignore|1|finalizada|
-|2.|22/10/2024|practica 9|12|activa|
+|2.|22/10/2024|creando una aplicacion web usando express|12|activa|
 |3.|||
 |4.|||
 
