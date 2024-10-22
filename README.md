@@ -19,8 +19,8 @@ utilizando las reglas de negovio apropiadas para la gestion de indetificacion y 
 |4.|||
 
 ### Autor
-Giovany Raul Pazos Cruz
+Giovany Raul Pazos Cruz/ [@giova0412](https://github.com/giova0412)
 unidad 2
 Aplicaciones Web Orientadas a Servicios 
 Obtubre 2024
-https://github.com/giova0412/Bienes_Raices_230314.git
+
