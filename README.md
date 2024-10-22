@@ -17,7 +17,8 @@ utilizando las reglas de negovio apropiadas para la gestion de indetificacion y 
 |2.|22/10/2024|creando una aplicacion web usando express|12|activa|
 |3.|||
 |4.|||
-
+### Tech Stack
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 ### Autor
 Giovany Raul Pazos Cruz/ [@giova0412](https://github.com/giova0412)
 unidad 2
