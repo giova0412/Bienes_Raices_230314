@@ -1,14 +1,12 @@
-{
+ {
   "name": "mx.utxj.ti.awos.bienesraices",
   "version": "1.0.0",
   "description": "Proyecto de Clase para la unidad 2,de la asignatura AWOS utilizando node.js",
   "main": "index.js",
   "type": "module",
   "scripts": {
-   "saluda":"node saluda.js",
-   "server":"nodemon index.js"
-
-
+    "saluda": "node saluda.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +33,9 @@
   },
   "homepage": "https://github.com/giova0412/Bienes_Raices_230314#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "run": "^1.5.0",
+    "server": "^1.0.41"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
