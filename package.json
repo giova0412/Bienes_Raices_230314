@@ -7,6 +7,7 @@
   "scripts": {
     "saluda": "node saluda.js",
     "server": "nodemon index.js"
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch"
   },
   "repository": {
     "type": "git",
@@ -35,8 +36,6 @@
   "dependencies": {
     "express": "^4.21.1",
     "pug": "^3.0.3",
-    "run": "^1.5.0",
-    "server": "^1.0.41"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
