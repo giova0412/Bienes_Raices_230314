@@ -1,13 +1,26 @@
-const formularioLogin = (request, response) => {
-    response.render('auth/login', { autenticado: false });
+const formularioLogin = (req, res) =>{
+    res.render('auth/login',{
+        page : "Iniciar sesion"
+    })
 };
 
-const formularioRegister = (request, response) => {
-    response.render('auth/register', { autenticado: false });
+
+const formularioRegister = (req, res) =>{
+    res.render('auth/register',{
+        page : "Crear una cuenta"
+    })
 };
 
-const formularioPasswordRecovery = (request, response) => {
-    response.render('auth/passwordRecovery', { autenticado: false }); // Asegúrate de que la vista exista
+
+const formularioPasswordRecovery = (req, res) =>{
+    res.render('auth/passwordRecovery',{
+        page : "Recupera tu contraseña"
+    })
 };
 
-export { formularioLogin, formularioRegister, formularioPasswordRecovery };
+
+export {
+    formularioLogin,
+    formularioRegister,
+    formularioPasswordRecovery
+}
