@@ -1,37 +1,46 @@
 import express from 'express';
+import {formularioLogin, formularioRegister, formularioPasswordRecovery} from '../controllers/userControllers.js'
 
 const router = express.Router();
 
-router.get("/findByID/:id", (request, response) => {
-    response.send(`Se está solicitando el usuario con ID ${request.params.id}`);
-});
+//EndPoints - son las rutas para acceder a las secciones o funciones de nuestra aplicacion web
+//2 componentes de una peticion, ruta, funcion, callback
+// ":" en una ruta definen de manera posicional los parametros de entrada
 
-router.post("/newUser/:name/:email/:password", (req, res) => {
-    res.send(`Se ha solicitado la creación de un nuevo usuario: ${req.params.name}, asociado al correo electrónico ${req.params.email} con la contraseña ${req.params.password}`);
-});
-//PUT - Se utiliza para la actualización total de información del cliente al servidor
-router.put("/replaceUserByEmail/:name/:email/:password", function(a,b){
-    b.send(`Se ha solicitado el reemplazo de toda la información del usuario: ${a.params.name}, con correo: ${a.params.email} y contraseña: ${a.params.password}`)
-  })
-  //PATCH - Se utiliza para la actualización parcial
-router.patch("/updatePassword/:email/:newPassword/:newPasswordConfirm", function(request, response){
-  
-    const {email, newPass, passConfirm} = request.params;  // Desestructuración de un objeto
-    
-    if(newPass === passConfirm) {
-      response.send(`Se ha solicitado la actualización de la contraseña del usuario con correo: ${email}, se aceptan los cambios ya que la contraseña y confirmación son la misma.`);
-    } else {
-      response.send(`Se ha solicitado la actualización de la contraseña del usuario con correo: ${email} con la nueva contraseña ${newPass}, pero se rechaza el cambio dado que la nueva contraseña y su confirmación no coinciden.`);
-    }
-  
-  });
-   //delette
-   router.delete("/deleteUser/:email",function(req,res){
-    res.send(`se ha solicitado la eliminacion del usuario acociado al correo ${req.params.email}`)
-   })
+//GET - 
+router.get("/FindById/:Id" ,function (request, response){
+    response.send(`Se esta solicitando buscar al usuario con ID: ${request.params.Id}`);
+})
 
+//POST - 
+    router.post("/newUser/:name/:email/:password", function (req, res){
+        res.send(` se ha solicitado la creacion de un nuevo usuario de nombre: ${req.params.name},
+            asociado al correo electronico ${req.params.email} y con la contraseña ${req.params.password}`);
+    })
+//PUT - Se utiliza para la actualizacion global de todo el objeto, en este caso la informacion del usuario
+    router.put("/replaceUser/:name/:email/:password", function (taco, quesadilla) {
+        quesadilla.send(`Se esta solicitando el remplazo de toda la informacion del usuario: ${taco.params.name},
+            con el correo electronico ${taco.params.email} y la contraseña ${taco.params.password}`);
+    })
+//PATCH - Se utiliza para la actualizacion de ciertas propiedades del objeto
+    router.patch("/updatePassword/:email/:newPassword/:passwordConfirm", function (a, b){
+        const {email, newPassword, passwordConfirm} = a.params //desestructuracion de un objeto
+        if (newPassword === passwordConfirm){
+            b.send(`Se esta solicitando la actalizacion de la contraseña del usuario del usuario con el correo: ${email},
+                se aceptan los cambios ya que la contraseña y la confirmacion es la misma`);
+        }else{
+            b.send(`Se esta solicitando la actalizacion de la contraseña del usuario del usuario con el correo: ${email},
+                con la nueva contraseña ${newPassword}, pero se rechaza el cambio dado que su nueva contraseña y su confirmacion no coinciden`);
+        }
+    })
+//DELETE
+    router.delete("/deleteUser/:name", function (pko, mota){
+        mota.send(`se esta solicitando eliminar el usuario ${pko.params.name}`);
+        });
+
+
+router.get("/login", formularioLogin)
+router.get("/register", formularioRegister)
+router.get("/passwordRecovery", formularioPasswordRecovery)
 
 export default router;
-
-
-

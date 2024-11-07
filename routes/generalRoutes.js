@@ -1,4 +1,4 @@
-import express from 'express';  // Asegúrate de usar comillas simples
+import express from 'express';
 
 const router = express.Router();
 
@@ -16,5 +16,6 @@ router.get("/quienEres", (req, res) => {
 });
 
 export default router;
+
 
   

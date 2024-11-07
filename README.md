@@ -14,8 +14,8 @@ utilizando las reglas de negovio apropiadas para la gestion de indetificacion y 
 |No.|fecha|Descripcion|Estatus|potenciadores|
 |--|--|--|--|--|
 |8.|17/10/2024|repositorio del proyecto implementando .gitignore|1|finalizada|
-|2.|22/10/2024|creando una aplicacion web usando express|12|activa|
-|3.|||
+|9.|22/10/2024|creando una aplicacion web usando express|12|activa|
+|10.|23/10/2024|operaciones basicas de una api atraves de  http|12|activa
 |4.|||
 ### Tech Stack
 ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) 
