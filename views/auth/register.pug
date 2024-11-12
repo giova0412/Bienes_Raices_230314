@@ -3,7 +3,7 @@ extends ../layout/index
 block contenido
     div.py-10
         h1.text-center.text-4xl.my-10.font-extrabold.text-primary Bienes
-            span.font-normal.text-neutral Raices
+            span.font-normal.text-white Raices
         h2.text-center.text-3xl.font-extrabold= page
 
         .mt-8.mx-auto.max-w-md
@@ -11,23 +11,23 @@ block contenido
                 form
                     div
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold Nombre:
-                        input#name.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(type="text" placeholder="ej. Giovany Pazos" name="name")
+                        input#name.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(type="text" placeholder="ej. Giovany Pazos" name="name")
                     br
                     div
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold Correo:
-                        input#email.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(placeholder="usuario@domain.com" name="email" type="email")
+                        input#email.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(placeholder="usuario@domain.com" name="email" type="email")
                     br
                     div
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold Contraseña:
-                        input#password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
+                        input#password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(placeholder="▪▪▪▪▪▪▪▪▪" name="password" type="password" required)
                     br
                     div
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold Confirmar Contraseña:
-                        input#recovery-password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(placeholder="▪▪▪▪▪▪▪▪▪" name="recovery-password" type="password" required)
+                        input#recovery-password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(placeholder="▪▪▪▪▪▪▪▪▪" name="recovery-password" type="password" required)
                     br
                     div
-                        input#button_login.w-full.bg-secondary.text-background.font-semibold.py-3.rounded-lg.cursor-pointer(type="submit" value="Login" class="hover:bg-primary")
+                        input#button_login.w-full.bg-secondary.text-background.font-semibold.py-3.rounded-lg.cursor-pointer(type="submit" value="Login" class="hover:bg-primary active:bg-primary")
                     br
                     div.flex.items-center.justify-between.pt-5
                         a.text-sm.text-neutral(href="/user/login" class="hover:underline decoration-primary") ¿Tienes una cuenta?, Inicia sesión
-                        a.text-sm.text-neutral(href="/user/passwordRecovery" class="hover:underline decoration-primary") ¿Olvidaste tu contraseña?, Recupérala
+                        a.text-sm

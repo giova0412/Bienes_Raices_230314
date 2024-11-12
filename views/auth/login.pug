@@ -3,7 +3,7 @@ extends ../layout/index
 block contenido
     div.py-10
         h1.text-center.text-4xl.my-10.font-extrabold.text-primary Bienes
-            span.font-normal.text-neutral Raices
+            span.font-normal.text-white Raices
         h2.text-center.text-3xl.font-extrabold= page
 
         .mt-8.mx-auto.max-w-xl
@@ -11,11 +11,11 @@ block contenido
                 form.space-y-5(action="/login" method="POST" noValidate)
                     div 
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold(for="email") Correo: 
-                        input#email.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(placeholder="user@domain.com" name="email")
+                        input#email.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(placeholder="user@domain.com" name="email")
 
                     div 
                         label.block.text-sm.uppercase.text-accent.mb-3.font-semibold(for="password") Contraseña:
-                        input#password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral(placeholder="*******" name="password" type="password") 
+                        input#password.w-full.px-3.py-2.border.border-neutral.rounded-sm.placeholder-neutral.text-black(placeholder="*******" name="password" type="password") 
                     
                     input#btn-login(
                         type="submit" 
