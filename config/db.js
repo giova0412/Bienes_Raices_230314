@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('bienesraices_230314', 'root', '795130',{
+const db = new Sequelize('bienesraices_230314', 'root', '1234',{
     host: 'localhost',
-    port: '3306',
+    port: '3307',
     dialect: 'mysql',
     define:{
         timestamps: true
