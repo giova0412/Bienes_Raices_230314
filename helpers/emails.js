@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 
 const registerEmail = async (datos) => {
-
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -91,6 +90,7 @@ const registerEmail = async (datos) => {
                 }
                 .image-container {
                     margin: 20px 0;
+                    text-align: center;
                 }
                 .image-container img {
                     max-width: 100%;
@@ -104,14 +104,18 @@ const registerEmail = async (datos) => {
                     <h1>¡Bienvenido a Bienes Raíces, ${nombre}!</h1>
                 </div>
                 <div class="content">
-                    <p>Gracias por registrarte en Bienes Raíces. Para completar el proceso,esperamos ofrecerte un gran servicio y experiencia , por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+                    <p>Gracias por registrarte en Bienes Raíces. Para completar el proceso, esperamos ofrecerte un gran servicio y experiencia. Por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
                     
+                    <a href="https://ibb.co/4pnjfnb" style="display: block; text-align: center; margin-bottom: 20px;">
+                        <img src="https://i.ibb.co/yqc8Rcz/firma.png" alt="firma" border="0" style="max-width: 200px;">
+                    </a>
+
                     <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirmAccount/${token}" class="btn">
                         Confirmar Cuenta
                     </a>
                 </div>
                 <div class="footer">
-                    <p>Si no has solicitado esta cuenta ignore el correo</p>
+                    <p>Si no has solicitado esta cuenta, ignora el correo.</p>
                 </div>
             </div>
         </body>

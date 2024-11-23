@@ -11,6 +11,8 @@ block contenido
                 form(action="/login" method="post").space-y-5
                     input(type="hidden" name="_csrf" value= csrfToken)
                     div.mb-5
+                        label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Bienvenido a Bienes Raices favor de iniciar sesion
+                    div.mb-5
                         label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu email:
                         input#email.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Ingresa tu email" type="email" name="email" required)
                     div.mb-5
