@@ -29,6 +29,9 @@ block contenido
                     div.mb-5
                         label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Confirma tu contraseña:
                         input#password2.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Confirma tu contraseña" type="password" name="confirmPassword")
+                    div.mb-5
+                        label.block.text-sm.uppercase.text-secondaryText.mb-2.font-bold Ingresa tu fecha de nacimiento:
+                        input#fechaNacimiento.w-full.px-4.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="fechaNacimiento" value= user ? user.fechaNacimiento : '')
 
                     input(class="w-full bg-action text-white hover:bg-hoverAction font-bold py-3 cursor-pointer" type="submit" value="Crear cuenta")
 
