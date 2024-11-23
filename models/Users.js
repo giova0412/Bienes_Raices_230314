@@ -17,7 +17,8 @@ const User =  db.define('Users', {
     },
     token: DataTypes.STRING,
     confirm: DataTypes.BOOLEAN,
-}, {
+    },
+     {
     hooks: {
         beforeCreate: async function(user) {
             const salt = await bcrypt.genSalt(10)
