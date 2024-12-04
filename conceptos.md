@@ -17,5 +17,5 @@ EMAIL_PORT=2525
 EMAIL_USER=c35fedc79d5d1c
 EMAIL_PASS=7287a0815b65ac
 
-BACKEND_URL=http://localhost
+BACKEND_URL=http://localhost...
 
