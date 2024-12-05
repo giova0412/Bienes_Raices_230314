@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
 
-const registerEmail = async (datos) => {
+const emailAfterRegister = async (datos) => {
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -124,4 +124,32 @@ const registerEmail = async (datos) => {
     });
 }
 
-export { registerEmail };
+const emailChangePassword = async (userData) => {
+    const transport = nodemailer.createTransport({
+        host: process.env.EMAIL_HOST, 
+        port: process.env.EMAIL_PORT,
+        auth:{
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    })
+
+    //console.log(data)
+    const {email, name, token} = userData
+
+    //Enviar el email
+    await transport.sendMail({
+        from: 'bieneracices-matricula.com',
+        to: email,
+        subject: 'Solicitud de actualización de contraseña en BienesRaíces.com',
+        text: 'Por favor actualiza tu contraseña para ingresar a la plataforma',
+        html: `<p> Hola,  <span style="color: red"> ${name}</span>, <br>
+        Haz reportado el olvido o perdida de tu contraseña para acceder a tu cuenta de BienesRaices.
+        <br>
+        <p>Por lo que necesitamos que  igreses a la siguiente liga para: <a href="${process.env.BACKEND_URL}:${process.env.BACKEND_PORT ?? 3000}/auth/passwordRecovery/${token}">Actualizar Contraseña</a></p> 
+        <br>`
+     })
+
+}
+
+export {emailAfterRegister, emailChangePassword}
