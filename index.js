@@ -18,7 +18,7 @@ const app = express()
 
 
 //Habilitamos la lectura de datos desde formularios.
-app.use(express.urlencoded({encoded:true}))
+app.use(express.urlencoded({ extended: true })); 
 
 // Habilitar Cookie Parser 
 app.use(cookieParser())
