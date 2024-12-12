@@ -1,13 +1,73 @@
 import {check, validationResult} from 'express-validator'
-import { generatetId } from '../helpers/tokens.js'
+import { generatetId, generateJWT } from '../helpers/tokens.js'
 import { emailAfterRegister, emailChangePassword } from '../helpers/emails.js' 
 import User from '../models/User.js'
+import bcrypt from 'bcrypt'
 
-const formularioLogin = (request, response) =>   {
-        response.render("auth/login", {
+const formularioLogin = (req, res) =>   {
+        res.render("auth/login", {
             page : "Iniciar sesion",
+            csrfToken: req.csrfToken()
         })
     }
+ 
+    const userAuthentication = async (req, res) => {
+        const { email, password } = req.body;
+    
+        // Validación básica
+        await check('email').isEmail().withMessage('El correo no es válido').run(req);
+        await check('password').notEmpty().withMessage('La contraseña no puede estar vacía').run(req);
+    
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            return res.render('auth/login', {
+                page: 'Iniciar Sesión',
+                csrfToken: req.csrfToken(),
+                errors: result.array(),
+                user: req.body
+            });
+        }
+    
+        const user = await User.findOne({ where: { email: email } });
+    
+        if (!user) {
+            return res.render('auth/login', {
+                page: 'Iniciar Sesión',
+                csrfToken: req.csrfToken(),
+                errors: [{ msg: 'Correo no registrado. Crea una cuenta para iniciar sesion' }],
+                user: req.body
+            });
+        }
+    
+        if (!user.confirm) {
+            return res.render('auth/login', {
+                page: 'Iniciar Sesión',
+                csrfToken: req.csrfToken(),
+                errors: [{ msg: 'La cuenta aun no ha sido autenticada.' }],
+                user: req.body
+            });
+        }
+    
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.render('auth/login', {
+                pagina: 'Iniciar Sesión',
+                csrfToken: req.csrfToken(),
+                errors: [{ msg: 'Contraseña incorrecta.' }],
+                usuario: req.body
+            });
+        }
+    
+        // Generar el JWT
+        const token = generateJWT(user.id);
+    
+        // Almacenar el token en una cookie
+        res.cookie('_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Solo si es producción, asegurar que sea seguro
+            sameSite: 'Strict',
+        }).redirect('/myProperties');    
+    };   
 
 const formularioRegister = (request, response) =>  {
         response.render('auth/register', {
@@ -31,7 +91,7 @@ const formularioPasswordRecovery = (request, response) =>  {
     
             const result = validationResult(request);
             if (!result.isEmpty()) {
-                console.log('Errores de validación:', result.array());
+                console.log('errors de validación:', result.array());
                 return response.render('auth/register', {
                     page: 'Error al intentar crear la Cuenta de Usuario',
                     errors: result.array(),
@@ -120,9 +180,9 @@ const formularioPasswordRecovery = (request, response) =>  {
         
             const result = validationResult(request);
         
-            // Verificamos si hay errores de validación
+            // Verificamos si hay errors de validación
             if (!result.isEmpty()) {
-                console.log("Errores de validación:", result.array());
+                console.log("errors de validación:", result.array());
                 return response.render("auth/passwordRecovery", {
                     page: 'Error al intentar resetear la contraseña',
                     errors: result.array(),
@@ -232,4 +292,4 @@ const formularioPasswordRecovery = (request, response) =>  {
         }
     
 
-export {formularioLogin, formularioRegister, formularioPasswordRecovery, createNewUser, confirm, passwordReset, verifyTokenPasswordChange, updatePassword}
+export {formularioLogin, userAuthentication, formularioRegister, formularioPasswordRecovery, createNewUser, confirm, passwordReset, verifyTokenPasswordChange, updatePassword}
